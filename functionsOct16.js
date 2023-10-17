@@ -53,7 +53,7 @@ const random = Math.floor((Math.random() * 3) + 1);
  * number)
  */
 function isTwo(random){
-    return random % 2 === 0;
+    return random === 2;
 }
 console.log(isTwo(random));
 
@@ -78,8 +78,8 @@ console.log("Tip is $" + calculateTip(20,0.2));
  * prompt the user for the bill total and a percentage they would like to tip,
  * then display the dollar amount they should tip
  */
-let totalPrompt = prompt("Please enter the total");
-let percentPrompt = prompt("Please enter the percent tip would you like to give");
+let totalPrompt = parseFloat(prompt("Please enter the total"));
+let percentPrompt = parseFloat(prompt("Please enter the percent tip would you like to give"));
 let finalPrice = calculateTip(totalPrompt,percentPrompt);
 console.log("Your tip is $" + finalPrice);
 
