@@ -1,13 +1,6 @@
 "use strict";
 
 /* ########################################################################## */
-function isItANumber(parameter){
-    if(typeof parameter === "number"){
-        return("It is a number")}
-            else{return("Not a number")
-        }
-console.log(parameter)
-
 /**
  * TODO:
  * Create a function named `analyzeColor` that accepts a string that is a color
@@ -34,18 +27,38 @@ console.log(parameter)
 // - `randomColor`: contains a single random color value from the list (this
 //                  will contain a different color every time the page loads)
 const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
-const randomColor = colors[Math.floor(Math.random() * colors.length)];}
+const randomColor = colors[Math.floor(Math.random() * colors.length)];
 /**
  * TODO:
  * Pass the `randomColor` variable to your 'analyzeColor' function and console.log the results.
  * You should see a different message every time you refresh the page
  */
+// function analyzeColor(randomColor){
+// } console.log(randomColor);
 
 /**
  * TODO:
  * Comment out the code above, and refactor your function to use a switch-case statement
  */
-
+function analyzeColor (randomColor){
+    switch(randomColor){
+        case "red":
+            return alert("This is red!");
+        case "orange":
+            return alert("This is orange");
+        case "green":
+            return alert("This is green");
+        case "blue":
+            return alert("This is blue");
+        case ("indigo"):
+            return alert("indigo right?");
+        case ("violet"):
+            return alert("We got violet!")
+        default:
+            return alert("Not a color we have :( ")
+    }
+}
+console.log(analyzeColor(randomColor));
 /**
  * TODO:
  * Prompt the user for a color when the page loads, and pass the input from the
@@ -53,7 +66,8 @@ const randomColor = colors[Math.floor(Math.random() * colors.length)];}
  * function to show it to the user.
  */
 
-/* ########################################################################## */
+let promptedColor = prompt("What color to you choose");
+console.log(analyzeColor(promptedColor));
 
 /**
  * TODO:
@@ -75,6 +89,22 @@ const randomColor = colors[Math.floor(Math.random() * colors.length)];}
  * return value.
  */
 
+function calculateTotal(luckyNumber, total){
+    switch(luckyNumber){
+        case 0:
+            return total;
+        case 1:
+            return total * 0.1;
+        case 2:
+            return total * 0.25;
+        case 3:
+            return total * 0.35;
+        case 4:
+            return total * 0.5;
+        case 5:
+            return (0)
+    }
+}
 /**
  * TODO:
  * Uncomment the line below to generate a random number between 0 and 5.
@@ -84,7 +114,15 @@ const randomColor = colors[Math.floor(Math.random() * colors.length)];}
  * price before the discount was, and what their price after the discount is.
  */
 // Generate a random number between 0 and 6
-// const luckyNumber = Math.floor(Math.random() * 6);
+const luckyNumber = Math.floor(Math.random() * 6);
+const total = prompt("What is your total");
+const discountedPrice = calculateTotal(luckyNumber, total);
+
+alert(`Your lucky number is ${luckyNumber}`);
+alert(`Your total is $${total}`);
+alert(`Your final price is $${discountedPrice}`);
+
+console.log(calculateTotal(luckyNumber, total))
 
 /**
  * TODO:
@@ -104,3 +142,39 @@ const randomColor = colors[Math.floor(Math.random() * colors.length)];}
  * Can you refactor your code to use functions?
  * HINT: The way we prompt for a value could be improved
  */
+let running = confirm("Wanna see how smart I am?");
+if(running){
+    let number = parseFloat(prompt("Tell me a number"));
+    evenOrOdd(number);
+    positiveOrNegative(number);
+    plusTen(number);
+}else{
+    alert("Bye then.")
+}
+
+function evenOrOdd(number){
+    if (number === 0){
+        return alert("Number is 0")
+    }
+    else if (number%2 === 0){
+        return alert("Even")
+    }
+    else {
+        return alert("Odd")
+    }
+}
+function plusTen(number){
+    return alert(`Number plus 10 = ${number + 10}`);
+}
+
+function positiveOrNegative(number){
+    if(number === 0){
+        return alert("number is 0")
+    }
+    else if (number > 0){
+        return alert("number is positive")
+    }
+    else {
+        return alert("number negative")
+    }
+}
