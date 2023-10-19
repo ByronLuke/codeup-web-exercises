@@ -55,7 +55,7 @@ function analyzeColor (randomColor){
         case ("violet"):
             return alert("We got violet!")
         default:
-            return alert("Not a color we have :( ")
+            return alert("Interesting choice, I don't think I have that color.")
     }
 }
 console.log(analyzeColor(randomColor));
@@ -66,7 +66,7 @@ console.log(analyzeColor(randomColor));
  * function to show it to the user.
  */
 
-let promptedColor = prompt("What color to you choose");
+let promptedColor = prompt("What color to you choose").toLowerCase();
 console.log(analyzeColor(promptedColor));
 
 /**
@@ -102,7 +102,25 @@ function calculateTotal(luckyNumber, total){
         case 4:
             return total * 0.5;
         case 5:
-            return (0)
+            return ('You pay $0! Enjoy the extra cash money')
+    }
+}
+
+function percentage (luckyNumber){
+    switch (luckyNumber) {
+        case 0:
+            return "No discount today broski :( ";
+        case 1:
+         return "10%";
+        case 2:
+            return  "25%";
+        case 3:
+            return "35%";
+        case 4:
+            return  "50%";
+        case 5:
+            return  "100%";
+
     }
 }
 /**
@@ -120,6 +138,7 @@ const discountedPrice = calculateTotal(luckyNumber, total);
 
 alert(`Your lucky number is ${luckyNumber}`);
 alert(`Your total is $${total}`);
+alert(percentage(luckyNumber));
 alert(`Your final price is $${discountedPrice}`);
 
 console.log(calculateTotal(luckyNumber, total))
@@ -149,7 +168,7 @@ if(running){
     positiveOrNegative(number);
     plusTen(number);
 }else{
-    alert("Bye then.")
+    alert("Bye Felicia.")
 }
 
 function evenOrOdd(number){
