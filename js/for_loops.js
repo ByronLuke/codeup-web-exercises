@@ -6,7 +6,8 @@ function showMultiplicationTable(number){
         const result = number*i;
         console.log(`${number} x ${i} = ${result}`);
     }
-}console.log(showMultiplicationTable(number))
+}
+showMultiplicationTable(number)
 
 //Question 3
 function evenOrOdd(){
@@ -20,7 +21,7 @@ function evenOrOdd(){
         }
     }
 }
-console.log(evenOrOdd());
+evenOrOdd();
 
 //Question 4
 for (let i = 1; i <=9 ; i++) {

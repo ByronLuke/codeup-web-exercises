@@ -1,5 +1,4 @@
 let userInput;
-
 while(true){
     userInput = parseFloat(prompt("Number between 1 and 50"))
     if(userInput <= 50 && userInput >= 1){
