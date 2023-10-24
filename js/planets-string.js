@@ -26,6 +26,6 @@
     var planetsWithBreaks = planetsArray.join('<br>');
     console.log(planetsWithBreaks);
 
-    var planetsWithUnorderedList = '<ul><li>' + planetsArray.join('<li>') +'<li><ul>'
+    var planetsWithUnorderedList = '<ul><li>' + planetsArray.join('</li><li>') +'</li><ul>'
     console.log(planetsWithUnorderedList);
 })();
