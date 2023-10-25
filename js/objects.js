@@ -26,9 +26,9 @@
      * > console.log(person.sayHello()) // "Hello from Rick Sanchez!"
      */
     person.sayHello = function () {
-        console.log(`Hello from ${person.firstName} ${person.lastName}`)
+        return `Hello from ${this.firstName} ${this.lastName}`
     }
-    person.sayHello();
+    console.log(person.sayHello());
     /** TODO:
      * HEB has an offer for the shoppers that buy products amounting to
      * more than $200. If a shopper spends more than $200, they get a 12%
@@ -57,10 +57,10 @@
         if(shopper.amount > 200){
             discount = 0.12;
             totalAfterDiscount = shopper.amount - (shopper.amount * discount);
-            console.log(`Hi ${shopper.name}! You spent $${shopper.amount} today! Congratulations, you earned a discount of ${discount * 100}%, making your new total $${totalAfterDiscount}`)
+            console.log(`Hi ${shopper.name}! You spent $${shopper.amount.toFixed(2)} today! Congratulations, you earned a discount of ${discount * 100}%, making your new total $${totalAfterDiscount.toFixed(2)}`)
 
         }else{
-            console.log(`Hi ${shopper.name}! You spent $${shopper.amount} today! Unfortunately, you must spend $${200 - shopper.amount} more to earn a discount of 12%`)
+            console.log(`Hi ${shopper.name}! You spent $${shopper.amount.toFixed(2)} today! Unfortunately, you must spend $${200 - shopper.amount.toFixed(2)} more to earn a discount of 12%`)
         }
     }
 
@@ -143,12 +143,21 @@
      *      ---
      *      ...
      */
+    //forEach answer
     books.forEach(function (book) {
         console.log(`Book # ${books.indexOf(book)+1}`);
         console.log(`Title: ${book.title}`);
         console.log((`Author: ${book.author.firstName} ${book.author.lastName}`))
         console.log('---')
     })
+    //for(i) answer
+    for (let i = 0; i < books.length; i++) {
+        const book = books[i];
+        console.log(`Book # ${i+1}`);
+        console.log(`Title: ${book.title}`);
+        console.log((`Author: ${book.author.firstName} ${book.author.lastName}`))
+        console.log('---')
+    }
     /**
      * Bonus:
      * - Create a function named `createBook` that accepts a title and author
@@ -161,5 +170,6 @@
      */
 
     function createBook(title,authorFirstName, authorLastName) {
+
     }
 })();
