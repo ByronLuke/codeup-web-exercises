@@ -1,4 +1,39 @@
 .fancy-header {
-    color: purple; /* single line comment */
+    color: ghostwhite; /* single line comment */
     text-decoration: underline;
+    display: flex;
+}
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the content horizontally */
+    color: lightgray;
+}
+h1{
+    color: whitesmoke;
+    text-decoration: underline;
+}
+body {
+    background-image: url("../images/darkBlueTech.jpeg"); /* Replace 'your-image.jpg' with the actual image file path */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-position: center center; /* Center the image horizontally and vertically */
+    background-size: cover; /* Make the image cover the entire background */
+}
+main{
+color: lightsteelblue;
+}
+ul{
+    list-style: square;
+}
+ol{
+    list-style: lower-roman;
+}
+body{
+    font-family: 'Petit Formal Script', cursive;;
+}
+th,td{
+    padding: 15px;
+    text-align: left;
+    background-color: lightblue;
+    color: darkblue;
 }
