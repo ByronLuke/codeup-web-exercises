@@ -1,4 +1,37 @@
 /* All your custom styles for this site go here */
+.abs-img{
+    position: absolute;
+}
+#dots-1{
+    left: 80px;
+}
+#dots-2{
+    top: 20px;
+    right: 80px;
+}
+#footer-wave-bottom{
+    bottom: 0;
+}
+#footer-wave-top{
+bottom: 0;
+}
+#times-icon{
+     top: 255px;
+    right: 240px;
+    padding: 5px;
+    background-color: white;
+    border-color: black;
+    border-radius: 100px;
+}
+#wavy-lines-1{
+ left: 20px;
+    top: 10em;
+}
+#wavy-lines-2{
+    right: 0;
+}
+
+
 body {
     font-family: 'Montserrat', sans-serif;
 }
@@ -12,6 +45,7 @@ body {
     width: calc(100% - 40px);
     max-width: 530px;
     box-shadow: 0px 0px 104px -40px rgba(0, 0, 0, 0.25);
+
 }
 
 .container.login h1 {
@@ -27,7 +61,7 @@ input {
     font-size: 15px;
 }
 
-input:placeholder {
+input placeholder {
     color: #ABAFB3;
 }
 
