@@ -3,35 +3,38 @@
     position: absolute;
 }
 #dots-1{
-    left: 80px;
+    left: 5em;
+    top: 25em;
 }
 #dots-2{
-    top: 20px;
-    right: 80px;
+    top: 2em;
+    right: 5em;
 }
-#footer-wave-bottom{
-    bottom: -2em;
-}
-#footer-wave-top{
-bottom: -2em;
+#footer-wave-bottom, #footer-wave-top{
+    bottom: 0;
+    width: 100%;
 }
 #times-icon{
-    top: 180px;
-    right: 440px;
-    padding: 5px;
+    position: absolute;
+    z-index: 2;
+    top: -.3em;
+    right: -0.3em;
+    width: 2em;
+    height: 2em;
+    border-radius: 2em;
+    border: 0;
     background-color: white;
-    border-color: black;
-    border-radius: 100px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.63);
 }
 #wavy-lines-1{
-    left: 20px;
+    left: 1em;
     top: 10em;
     height: 120px;
 }
 #wavy-lines-2{
-    right: 0;
+    right: 1em;
+    top: 18em;
 }
-
 
 body {
     font-family: 'Montserrat', sans-serif;
@@ -46,7 +49,8 @@ body {
     width: calc(100% - 40px);
     max-width: 530px;
     box-shadow: 0px 0px 104px -40px rgba(0, 0, 0, 0.25);
-
+    z-index: 1;
+    position: relative;
 }
 
 .container.login h1 {
