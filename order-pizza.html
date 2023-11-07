@@ -78,7 +78,7 @@
                     </label>
                 </div>
             </div>
-
+        </div>
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"></h5>
@@ -108,6 +108,59 @@
     </div>
 
     <div class="tab-pane fade" id="cheese-and-sauce" role="tabpanel" aria-labelledby="cheese-and-sauce-tab">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Choose Cheese and Sauce</h5>
+
+                <div class="card">
+                    <div class="card-body">
+                        Cheese
+                    </div>
+                </div>
+                <div class="list-group">
+                    <label for="cheeseDataList" class="form-label">How much ya want?</label>
+                    <input class="form-control" list="cheeselistOptions" id="cheeseDataList" placeholder="Light/ Normal/ Extra/ Double">
+                    <datalist id="datalistOptions">
+                        <option value="Light">
+                        <option value="Normal">
+                        <option value="Extra">
+                        <option value="Double">
+
+                    </datalist>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+
+                <div class="card">
+                    <div class="card-body">
+                        Sauce
+                    </div>
+                </div>
+                <div class="list-group">
+                    <label for="sauceDataList" class="form-label">What type of sauce we gettin'?</label>
+                    <input class="form-control" list="saucelistOptions" id="sauceDataList" placeholder="Tomato/ Marinara/ BBQ/ Alfredo">
+                    <datalist id="saucelistOptions">
+                        <option value="Tomato">
+                        <option value="Marinara">
+                        <option value="BBQ">
+                        <option value="Alfredo">
+                    </datalist>
+                </div>
+                <div class="list-group">
+                    <label for="sauceAmountList" class="form-label">How much ya want?</label>
+                    <input class="form-control" list="sauceAmountOptions" id="sauceAmountList" placeholder="Light/ Normal/ Extra/ Double">
+                    <datalist id="sauceAmountOptions">
+                        <option value="Light">
+                        <option value="Normal">
+                        <option value="Extra">
+                    </datalist>
+                </div>
+            </div>
+            </div>
+        </div>
 
     </div>
     <div class="tab-pane fade" id="toppings" role="tabpanel" aria-labelledby="toppings-tab">
