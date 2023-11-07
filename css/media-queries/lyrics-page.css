@@ -1,0 +1,10 @@
+
+body{
+    background-color: palegoldenrod;
+}
+
+@media screen and (max-width: 50vw){
+    body {
+       background-color : red;
+    }
+}
