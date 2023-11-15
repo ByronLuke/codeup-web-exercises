@@ -55,6 +55,35 @@
 
         // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
         subParagraphs[0].innerText="Mission Accomplished!"
+
+        //MOUSE-EVENTS
+
+        // Question 2 (mouse-events)
+        mainHeader.addEventListener("click", function () {
+            mainHeader.style.backgroundColor = "hotpink";
+        });
+
+        // Question 3 (mouse-events)
+        const paragraphs = document.querySelectorAll("p");
+
+        paragraphs.forEach(function (paragraph) {
+            paragraph.addEventListener("dblclick", function () {
+                paragraph.style.fontSize = "18px";
+            });
+        });
+
+        // Question 4 (mouse-events)
+        for (let i = 0; i < listItems.length; i++) {
+            const listItem = listItems[i];
+
+            listItem.addEventListener("mouseover", function () {
+                listItem.style.color = "red";
+            });
+
+            listItem.addEventListener("mouseout", function () {
+                listItem.style.color = "black";
+            });
+        }
 </script>
 </body>
 </html>
