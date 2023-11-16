@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>DOM: Query and Modify</title>
+    <link rel="stylesheet" href="css/dom-query-styles.css">
 </head>
 <body>
 
@@ -25,36 +26,56 @@
     culpa qui officia deserunt mollit anim id est laborum.
 
 </p>
+<div>
+    <button id="btn-1"> Click once</button>
+    <button id="btn-2"> Double click</button>
+    <button id="btn-3"> Click once</button>
+    <button id="btn-4"> Double click</button>
+</div>
 <script>
-        "use strict";
+    const button1= document.querySelector("#btn-1");
+    const button2= document.querySelector("#btn-2");
+    const button3= document.querySelector("#btn-3");
+    const button4= document.querySelector("#btn-4");
+
+    "use strict";
         // TODO: Uncomment next line and get the main header element by id
         const mainHeader = document.getElementById("main-header");
 
         // TODO: Set inner html of mainHeader to "JavaScript is Cool"
+    button1.addEventListener("click", () =>{
         mainHeader.innerHTML="JavaScript is Cool"
+    })
 
         // TODO: Uncomment the next line and get the sub header element by id
         const subHeader = document.getElementById("sub-header");
 
         // TODO: Set the text color of subHeader to blue
-        subHeader.style.color = "blue";
+        button2.addEventListener("dblclick", ()=>{
+            subHeader.style.color = "blue"
+    })
 
         // TODO: Uncomment the next line and get all list items
         const listItems = document.getElementsByTagName("li");
 
         // TODO: Set text color on every other list item to grey
-        for (let i = 0; i < listItems.length; i++) {
-            if(i%2!==0){
-                listItems[i].style.color = "grey";
-            }
-        }
         // TODO: Set text color of li with dbid = 1 to blue
+        button3.addEventListener("click", ()=>{
+            for (let i = 0; i < listItems.length; i++) {
+                if(i%2!==0){
+                    listItems[i].style.color = "grey";
+                }
+            }
             listItems.item(0).style.color = "blue";
-        // TODO: Uncomment the next line and get all elements with class name sub-paragraph
-        const subParagraphs = document.getElementsByClassName("sub-paragraph");
+        })
 
-        // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
-        subParagraphs[0].innerText="Mission Accomplished!"
+        // TODO: Uncomment the next line and get all elements with class name sub-paragraph
+    // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
+
+    const subParagraphs = document.getElementsByClassName("sub-paragraph");
+        button4.addEventListener("dblclick", ()=>{
+            subParagraphs[0].innerText="Mission Accomplished!"
+        })
 
         //MOUSE-EVENTS
 
@@ -76,11 +97,11 @@
         for (let i = 0; i < listItems.length; i++) {
             const listItem = listItems[i];
 
-            listItem.addEventListener("mouseover", function () {
+            listItem.addEventListener("mouseenter", function () {
                 listItem.style.color = "red";
             });
 
-            listItem.addEventListener("mouseout", function () {
+            listItem.addEventListener("mouseleave", function () {
                 listItem.style.color = "black";
             });
         }
