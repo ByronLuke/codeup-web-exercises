@@ -47,6 +47,13 @@ button.addEventListener("click", () =>{
     }
 });
 
+const hThrees= document.querySelectorAll("h3");
+hThrees.forEach((hThree) => {
+    hThree.addEventListener("click", () => {
+        hThree.nextElementSibling.style.fontWeight = "bold";
+    });
+});
+
 </script>
 <dl>
     <dt>How many people visit the national parks?</dt>
