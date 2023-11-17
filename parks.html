@@ -34,8 +34,20 @@
         <li>Fact 4</li>
     </ul>
 </div>
-<button> Click for </button>
+<button id="yellow-button"> Click for yellowness</button>
 
+<script>
+const button = document.querySelector("#yellow-button");
+
+button.addEventListener("click", () =>{
+    const uls = document.querySelectorAll("ul");
+    for (let i = 0; i < uls.length; i++) {
+        const lastLI = uls[i].lastElementChild;
+        lastLI.style.background="yellow";
+    }
+});
+
+</script>
 <dl>
     <dt>How many people visit the national parks?</dt>
     <dd>Total recreation visitors to the national parks in 2018: 318,211,833.</dd>
