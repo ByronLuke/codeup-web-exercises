@@ -37,22 +37,28 @@
 <button id="yellow-button"> Click for yellowness</button>
 
 <script>
-const button = document.querySelector("#yellow-button");
-
+    //Create a button, when clicked, makes the last li in each ul have yellow background
+    const button = document.querySelector("#yellow-button");
 button.addEventListener("click", () =>{
     const uls = document.querySelectorAll("ul");
-    for (let i = 0; i < uls.length; i++) {
-        const lastLI = uls[i].lastElementChild;
-        lastLI.style.background="yellow";
+    for (const ul of uls){
+        ul.lastElementChild.style.backgroundColor = "yellow";
     }
 });
-
-const hThrees= document.querySelectorAll("h3");
-hThrees.forEach((hThree) => {
-    hThree.addEventListener("click", () => {
-        hThree.nextElementSibling.style.fontWeight = "bold";
-    });
-});
+//when any h3 is clicked, the lis underneath should have font weight of bold
+const h3s= document.querySelectorAll("h3");
+for (const h3 of h3s){
+    h3.addEventListener("click", (e) => {
+        e.currentTarget.nextElementSibling.style.fontWeight ="bold";
+    })
+}
+// When any list item is clicked, the first li of that list item's parent ul should have a font color of blue
+const lis = document.querySelectorAll("li")
+for (const li of lis){
+    li.addEventListener("click",(e)=>{
+        e.currentTarget.parentElement.firstElementChild.style.color ="blue";
+    })
+}
 
 </script>
 <dl>
