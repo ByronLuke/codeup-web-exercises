@@ -1,0 +1,19 @@
+body {
+    font-family: 'Times New Roman', serif;
+    background-color: lightgray;
+    padding: 20px;
+}
+
+h1 {
+    color: saddlebrown;
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+p {
+    color: black;
+    font-size: 1.2em;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
