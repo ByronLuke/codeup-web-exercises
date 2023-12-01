@@ -5,7 +5,13 @@ function fetchData (lat,lon){
         `&appid=${WM_KEY}`)
         .then(data=> data.json())
         .then( data => {
-            console.log(data.list[0].main.temp)
+            for (let i = 0; i < data.list.length; i += 8) {
+                const div = document.querySelector('#weather-info')
+                const p = document.createElement('p')
+                p.innerHTML = data.list[i].main.temp;
+                div.appendChild(p)
+               console.log(data.list[i].main.temp)
+            }
         })
 }
 function mapBox(lat,lon){  mapboxgl.accessToken = MB_KEY;
