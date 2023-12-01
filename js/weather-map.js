@@ -1,17 +1,22 @@
 const lat= '29.890661';
 const lon = '-97.911530';
+
 function fetchData (lat,lon){
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WM_KEY}` +
         `&appid=${WM_KEY}`)
         .then(data=> data.json())
         .then( data => {
+            const div = document.querySelector('#weather-info')
+            div.innerHTML = '';
             for (let i = 0; i < data.list.length; i += 8) {
-                const div = document.querySelector('#weather-info')
                 const p = document.createElement('p')
                 p.innerHTML = data.list[i].main.temp;
                 div.appendChild(p)
-               console.log(data.list[i].main.temp)
             }
+            reverseGeocode({ lat: lat, lng: lon }, MB_KEY).then(function (results) {
+                const h2 = document.querySelector('h2')
+                h2.innerHTML = `City name: ${results}`;
+            });
         })
 }
 function mapBox(lat,lon){  mapboxgl.accessToken = MB_KEY;
@@ -35,12 +40,12 @@ function mapBox(lat,lon){  mapboxgl.accessToken = MB_KEY;
 
         fetchData(newLat, newLon); // Call fetchData with the updated values
 
-        return { lat: newLat, lon: newLon };
+        return {
+            lat: newLat, lon: newLon
+        };
     }
-
     marker.on('dragend', onDragEnd);
 }
-
 
 mapBox(lat,lon);
 fetchData(lat,lon)
