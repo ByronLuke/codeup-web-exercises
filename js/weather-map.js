@@ -10,7 +10,14 @@ function fetchData (lat,lon){
             div.innerHTML = '';
             for (let i = 0; i < data.list.length; i += 8) {
                 const p = document.createElement('p')
-                p.innerHTML = data.list[i].main.temp;
+                const tempInF = parseInt((data.list[i].main.temp - 273.15) * 1.8 + 32);
+                const feelsLikeTemp = parseInt((data.list[i].main.feels_like - 273.15) * 1.8 + 32)
+                const maxTemp = parseInt((data.list[i].main.temp_max - 273.15) * 1.8 + 32)
+                const weatherDescription = data.list[i].weather[0].description
+                const windSpeed = data.list[i].wind.speed
+                const date = data.list[i].dt_txt
+                console.log(feelsLikeTemp + ' '+ tempInF+ ' ' + maxTemp+ ' ' + weatherDescription+ ' ' + windSpeed+ ' ' + date)
+                p.innerHTML = feelsLikeTemp + ' '+ tempInF+ ' ' + maxTemp+ ' ' + weatherDescription+ ' ' + windSpeed+ ' ' + date;
                 div.appendChild(p)
             }
             reverseGeocode({ lat: lat, lng: lon }, MB_KEY).then(function (results) {
