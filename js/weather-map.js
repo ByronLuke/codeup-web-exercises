@@ -1,40 +1,81 @@
 const lat= '29.890661';
 const lon = '-97.911530';
 
+let map;
+let marker;
+
 function fetchData (lat,lon){
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WM_KEY}` +
         `&appid=${WM_KEY}`)
         .then(data=> data.json())
         .then( data => {
-            const div = document.querySelector('#weather-info')
-            div.innerHTML = '';
+
+            const weatherInfo = document.querySelector('#weather-info'); // Corrected ID
+            weatherInfo.innerHTML = '';
+
+            // Create a Bootstrap row
+            const row = document.createElement('div');
+            row.classList.add('row');
+
             for (let i = 0; i < data.list.length; i += 8) {
-                const p = document.createElement('p')
                 const tempInF = parseInt((data.list[i].main.temp - 273.15) * 1.8 + 32);
-                const feelsLikeTemp = parseInt((data.list[i].main.feels_like - 273.15) * 1.8 + 32)
-                const maxTemp = parseInt((data.list[i].main.temp_max - 273.15) * 1.8 + 32)
-                const weatherDescription = data.list[i].weather[0].description
-                const windSpeed = data.list[i].wind.speed
-                const date = data.list[i].dt_txt
-                console.log(feelsLikeTemp + ' '+ tempInF+ ' ' + maxTemp+ ' ' + weatherDescription+ ' ' + windSpeed+ ' ' + date)
-                p.innerHTML = feelsLikeTemp + ' '+ tempInF+ ' ' + maxTemp+ ' ' + weatherDescription+ ' ' + windSpeed+ ' ' + date;
-                div.appendChild(p)
+                const feelsLikeTemp = parseInt((data.list[i].main.feels_like - 273.15) * 1.8 + 32);
+                const maxTemp = parseInt((data.list[i].main.temp_max - 273.15) * 1.8 + 32);
+                const weatherDescription = data.list[i].weather[0].description;
+                const windSpeed = data.list[i].wind.speed;
+                const date = data.list[i].dt_txt;
+
+                // Create Bootstrap card
+                const card = document.createElement('div');
+                card.classList.add('card', 'col-md-3', 'm-3', 'weather-card'); // Adjusted the class and width
+
+// Card body
+                const cardBody = document.createElement('div');
+                cardBody.classList.add('card-body');
+
+// Card title (date)
+                const cardTitle = document.createElement('h5');
+                cardTitle.classList.add('card-title');
+
+// Format the date using toLocaleDateString
+                const options = {
+                    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                cardTitle.innerText = new Date(date).toLocaleDateString('en-US', options);
+
+// Card text (weather information)
+                const cardText = document.createElement('p');
+                cardText.classList.add('card-text');
+                cardText.innerHTML = `
+                                    Feels Like: ${feelsLikeTemp}&deg;F<br>
+                                    Temperature: ${tempInF}&deg;F<br>
+                                    Max Temperature: ${maxTemp}&deg;F<br>
+                                    Description: ${weatherDescription}<br>
+                                    Wind Speed: ${windSpeed} mph`;
+// Append elements to card
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardText);
+                card.appendChild(cardBody);
+
+                // Append card to the column
+                weatherInfo.appendChild(card);
             }
             reverseGeocode({ lat: lat, lng: lon }, MB_KEY).then(function (results) {
-                const h2 = document.querySelector('h2')
-                h2.innerHTML = `City name: ${results}`;
+                const h4 = document.querySelector('h4')
+                h4.innerHTML = `City name: ${results}`;
             });
         })
 }
-function mapBox(lat,lon){  mapboxgl.accessToken = MB_KEY;
-    const map = new mapboxgl.Map(
+function mapBox(lat,lon){
+    mapboxgl.accessToken = MB_KEY;
+    map = new mapboxgl.Map(
         {
             container: 'map', // container ID
             style: 'mapbox://styles/mapbox/streets-v12', // style URL
             center: [lon, lat], // starting position [lng, lat]
             zoom: 9, // starting zoom
         });
-    const marker = new mapboxgl.Marker({
+
+    marker = new mapboxgl.Marker({
         draggable: true
     })
         .setLngLat([lon, lat])
@@ -53,6 +94,37 @@ function mapBox(lat,lon){  mapboxgl.accessToken = MB_KEY;
     }
     marker.on('dragend', onDragEnd);
 }
+function handleSearch() {
+    const searchInput = document.querySelector('.form-control');
+    const cityName = searchInput.value;
+
+    // Replace 'YOUR_MAPBOX_API_KEY' with your actual Mapbox API key
+    const geocodingAPIUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(cityName)}.json?access_token=${MB_KEY}`;
+
+    fetch(geocodingAPIUrl)
+        .then(response => response.json())
+        .then(data => {
+            const feature = data.features[0];
+            if (feature) {
+                const newLat = feature.center[1];
+                const newLon = feature.center[0];
+
+                map.flyTo({ center: [newLon, newLat], zoom: 9 });
+                marker.setLngLat([newLon, newLat]);
+
+                fetchData(newLat, newLon);
+            } else {
+                console.error('Location not found');
+            }
+        })
+        .catch(error => console.error('Error during geocoding:', error));
+}
+
+// Add the event listener to the search button
+document.getElementById('searchBtn').addEventListener('click', handleSearch);
+
+
+
 
 mapBox(lat,lon);
 fetchData(lat,lon)
