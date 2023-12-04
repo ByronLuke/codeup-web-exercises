@@ -1,3 +1,16 @@
-#weather-info{
-    justify-content: center;
+.weather-card .card-text {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
 }
+.weather-card .card-title {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
+.weather-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

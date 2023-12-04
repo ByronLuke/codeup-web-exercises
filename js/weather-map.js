@@ -27,7 +27,38 @@ function fetchData (lat,lon){
 
                 // Create Bootstrap card
                 const card = document.createElement('div');
-                card.classList.add('card', 'col-md-3', 'm-3', 'weather-card'); // Adjusted the class and width
+                card.classList.add('card', 'm-3', 'weather-card', 'text-center'); // Adjusted the class and width
+                for (let i = 0; i < data.list.length; i += 8) {
+                    // ... (previous code)
+
+                    // Determine weather condition and set background image accordingly
+                    let backgroundImage;
+                    if (weatherDescription.includes('rain') || weatherDescription.includes('showers')) {
+                        backgroundImage = 'url("images/rain-image.jpeg")';
+                    } else if (weatherDescription.includes('cloud')) {
+                        backgroundImage = 'url("images/cloudy-images.jpeg")';
+                    }else if (weatherDescription.includes('overcast')) {
+                        backgroundImage = 'url("images/overcast-image.jpeg")';
+                    }else if (weatherDescription.includes('snow')) {
+                        backgroundImage = 'url("images/snow-image.jpeg")';
+                    }
+                    else if (weatherDescription.includes('sky')) {
+                        backgroundImage = 'url("images/clear-sky-image.jpeg") ';
+                    }
+                        else {
+                        // Default background image if condition is not met
+                        backgroundImage = 'url("path/to/default-image.jpg")';
+                    }
+
+                    // Set the background image of the card
+                    card.style.backgroundImage = backgroundImage;
+
+                    // ... (remaining code)
+                }
+
+
+
+
 
 // Card body
                 const cardBody = document.createElement('div');
@@ -122,9 +153,6 @@ function handleSearch() {
 
 // Add the event listener to the search button
 document.getElementById('searchBtn').addEventListener('click', handleSearch);
-
-
-
 
 mapBox(lat,lon);
 fetchData(lat,lon)
