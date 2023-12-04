@@ -55,11 +55,6 @@ function fetchData (lat,lon){
 
                     // ... (remaining code)
                 }
-
-
-
-
-
 // Card body
                 const cardBody = document.createElement('div');
                 cardBody.classList.add('card-body');
@@ -125,6 +120,7 @@ function mapBox(lat,lon){
     }
     marker.on('dragend', onDragEnd);
 }
+
 function handleSearch() {
     const searchInput = document.querySelector('.form-control');
     const cityName = searchInput.value;

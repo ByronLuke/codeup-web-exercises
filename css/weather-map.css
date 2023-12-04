@@ -12,5 +12,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 2em;
 }
-
+body {
+    font-family: 'Times New Roman', Times, serif;
+}
+#searchBtn{
+    margin-right: .2em;
+    border-width: 2px;
+}
+body{
+    background-color: ghostwhite;
+}
