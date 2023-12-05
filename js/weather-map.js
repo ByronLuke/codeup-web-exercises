@@ -93,10 +93,10 @@ function mapBox(lat,lon){
     mapboxgl.accessToken = MB_KEY;
     map = new mapboxgl.Map(
         {
-            container: 'map', // container ID
-            style: 'mapbox://styles/mapbox/streets-v12', // style URL
-            center: [lon, lat], // starting position [lng, lat]
-            zoom: 9, // starting zoom
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v12',
+            center: [lon, lat],
+            zoom: 9,
         });
     //creating the draggable marker on the map
     marker = new mapboxgl.Marker({
@@ -150,7 +150,7 @@ function handleSearch() {
         })
 }
 
-// Add the event listener to the search button
+// Add the event listener to the search button, when button clicked handlesearch function is used
 document.getElementById('searchBtn').addEventListener('click', handleSearch);
 
 //initialising the map and marker and weather data below with the long and latitude
