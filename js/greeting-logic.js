@@ -25,5 +25,5 @@ const greetings =
     ];
 
 export function generateRandomGreeting (){
-        return greetings[randomNumber(0,greetings.length)];
+        return greetings[randomNumber(0,greetings.length-1)];
 }
